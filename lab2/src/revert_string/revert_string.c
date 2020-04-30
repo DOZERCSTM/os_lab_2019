@@ -1,21 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "revert_string.h"
+#include <string.h>
 
-void RevertString(char **str)
-{
-	int len = strlen(*str);
-	char *buf_str = malloc(sizeof(char) * (len + 1));
-	strcpy(buf_str, *str);
-
-	int i = 0;
-	while (i < len) 
-	{
-		(*(*str+i)) = buf_str[len-i-1];
-		i++;
-	}
-
-	free(buf_str);
+void char_swap(char* l, char* r) {
+  char buf = *l;
+  *l = *r;
+  *r = buf;
 }
 
+void RevertString(char *str)
+{
+  int len = strlen(str);
+  int mid = len / 2;
+  int i;
+  for (i = 0; i < mid; i++)
+    char_swap(&str[i], &str[len - i - 1]);
+}
