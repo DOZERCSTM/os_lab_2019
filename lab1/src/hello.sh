@@ -5,4 +5,4 @@ pwd
 echo "time date"
 date
 echo "PATH"
-echo &PATH
+echo $PATH
