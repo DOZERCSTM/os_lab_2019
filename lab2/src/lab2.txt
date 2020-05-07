@@ -1,0 +1,78 @@
+bash-4.2 /projects $ cd bkmz268-os_lab_2019/lab2/src/swap/
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ ls
+main.c mySwap swap.c swap.h
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ cat > swap.c
+#include "swap.h"
+
+void Swap(char *left, char *right)
+{
+char buf = *left;
+*left = *right;
+*right = buf;
+}
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ gcc -0 Program swap.c swap.h main.c
+gcc: error: Program: No such file or directory
+gcc: error: unrecognized command line option '-0'
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ gcc -o Program swap.c swap.h main.c
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ ls
+Program main.c mySwap swap.c swap.h
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ ./Program
+b a
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/swap $ cd ..
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src $ cd revert_string/
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ls
+libDynRevert.so libStaticRevert.a main.c main.o myRevertString revert_string.c revert_string.h revert_string.o rezultDyn rezultStatic
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ cat > re
+revert_string.c revert_string.h revert_string.o rezultDyn rezultStatic
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ cat > re
+revert_string.c revert_string.h revert_string.o rezultDyn rezultStatic
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ cat > revert_string.c
+#include "revert_string.h"
+#include <string.h>
+
+void char_swap(char* l, char* r) {
+char buf = *l;
+*l = *r;
+*r = buf;
+}
+
+void RevertString(char *str)
+{
+int len = strlen(str);
+int mid = len / 2;
+int i;
+for (i = 0; i < mid; i++)
+char_swap(&str[i], &str[len - i - 1]);
+}
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc -o Program revert_string.h revert_string.c main.c
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./Program
+Usage: ./Program string_to_revert
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./Program qwerty
+Reverted: ytrewq
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $
+Илья
+Илья 20:17
+ 
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc -c revert_string.c rever_string.h
+gcc: error: rever_string.h: No such file or directory
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc -c revert_string.c
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ls
+Program libDynRevert.so libStaticRevert.a main.c main.o myRevertString revert_string.c revert_string.h revert_string.o rezultDyn rezultStatic
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ar rc libSTATIC.a revert_string.o
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ranlib libSTATIC.a
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc main.c -L. -lSTATIC -o REZULTSTATIC
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ls
+Program libDynRevert.so libStaticRevert.a main.o revert_string.c revert_string.o rezultStatic
+REZULTSTATIC libSTATIC.a main.c myRevertString revert_string.h rezultDyn
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./REZULTSTATIC
+Usage: ./REZULTSTATIC string_to_revert
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./REZULTSTATIC qwerty
+Reverted: ytrewq
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc -o libDYNAMIC.so -shared -fPIC revert_string.c
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc main.c -fPIC -L. -lDYNAMIC -o RESULTDYNAMIC
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ export LD_LIBRARY_PATH=.
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./RESULTDYNAMIC
+Usage: ./RESULTDYNAMIC string_to_revert
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./RESULTDYNAMIC qwerty
+Reverted: ytrewq
+bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $

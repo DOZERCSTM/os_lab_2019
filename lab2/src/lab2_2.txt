@@ -1,0 +1,11 @@
+gcc -c main.c -o main.out
+
+gcc -c revert_string.c -o revert_string_st.o
+ar rcs librev_st.a revert_string_st.o
+gcc main.out -L. -lrev_st -o st_lib
+./st_lib string
+
+gcc -c -fPIC revert_string.c -o revert_string_sh.o
+gcc -shared revert_string_sh.o -o librev_sh.so
+gcc main.out -L. -lrev_sh -o sh_lib
+LD_LIBRARY_PATH=$(pwd) ./sh_lib string
