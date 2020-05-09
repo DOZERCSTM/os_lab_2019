@@ -50,8 +50,6 @@ Usage: ./Program string_to_revert
 bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ ./Program qwerty
 Reverted: ytrewq
 bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $
-Илья
-Илья 20:17
  
 bash-4.2 /projects/bkmz268-os_lab_2019/lab2/src/revert_string $ gcc -c revert_string.c rever_string.h
 gcc: error: rever_string.h: No such file or directory
